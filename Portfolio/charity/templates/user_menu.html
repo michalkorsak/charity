@@ -1,0 +1,16 @@
+{% if user.is_authenticated %}
+      <nav class="container container--70">
+        <ul class="nav--actions">
+          <li class="logged-user">
+            Witaj {{ user.get_username }}
+            <ul class="dropdown">
+              <li><a href="/profile/">Profil</a></li>
+              <li><a href="#">Moje zbiórki</a></li>
+              <li><a href="#">Ustawienia</a></li>
+              <li><a href="/logout/">Wyloguj</a></li>
+                <li><a href="/admin/">Panel administratora</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+{% endif %}

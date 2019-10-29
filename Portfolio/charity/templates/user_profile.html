@@ -1,0 +1,17 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css'%}"/>
+
+{% block content %}
+{% if user.is_authenticated %}
+<section class="stats--item" style="font-size: large">
+
+        <ul>
+          <li>Twój profil:</li>
+          <li><a href="#">{{ user.username }}</a></li>
+          <li><a href="#">{{ user.first_name }}</a></li>
+          <li><a href="#">{{ user.last_name }}</a></li>
+          <li><a href="#">{{ user.email }}</a></li>
+        </ul>
+</section>
+{% endif %}
+{% endblock %}
