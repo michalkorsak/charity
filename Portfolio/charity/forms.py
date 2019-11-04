@@ -2,6 +2,11 @@ from django.contrib.auth.forms import UserCreationForm, UsernameField
 from registration.forms import User
 from django import forms
 
+"""
+django default user
+"""
+
+
 class UserCreationFormExtended(UserCreationForm):
     class Meta:
         model = User
