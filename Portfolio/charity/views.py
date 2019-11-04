@@ -1,24 +1,14 @@
-from django.contrib import messages, auth
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.models import UserManager, User
-from django.db.models import Sum
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, render_to_response, redirect
-from django.template.context_processors import csrf
-from django.utils.decorators import method_decorator
-from django.views.generic import ListView
-
-from charity import models
+from django.shortcuts import render, redirect
 from .forms import UserCreationFormExtended, LoginForm
 from .models import Donation, Category, Institution
-
-# Create your views here.
 from django.views import View
 
+"""
+Main page
+"""
 
-    
 class LandingPage(View):
 
     def get(self, request):
@@ -33,6 +23,9 @@ class LandingPage(View):
         return render(request, 'index.html', context)
 
 
+"""
+Adding donation to database
+"""
 class AddDonation(View):
 
     def get(self, request):
@@ -44,6 +37,9 @@ class AddDonation(View):
             return render(request, 'form.html', {'categories': categories,
                                                  'institutions': institutions})
 
+"""
+register, login, logout and profile view
+"""
 
 class Register(View):
 
@@ -88,6 +84,10 @@ class Profile(View):
 
     def get(self, request):
         return render(request, "user_profile.html")
+
+"""
+List of institutions
+"""
 
 
 class InstitutionList(View):
