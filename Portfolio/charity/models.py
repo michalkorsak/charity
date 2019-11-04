@@ -1,12 +1,10 @@
 from django.conf import settings
-from django.contrib.auth.models import User
 from django.db import models
-
-# Create your models here.
 from django.db.models import CASCADE
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from psycopg2.sql import NULL
+
+'''
+category of institution
+'''
 
 
 class Category(models.Model):
@@ -21,11 +19,18 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
 INSTITUTION_CHOICES = (
     ('1', 'fundacja'),
     ('2', 'organizacja pozarządowa'),
     ('3', 'zbiórka lokalna'),
 )
+
+
+"""
+Institution model, many to many with Categories
+"""
+
 
 class Institution(models.Model):
     name = models.CharField(max_length=64)
@@ -41,6 +46,11 @@ class Institution(models.Model):
 
     def __str__(self):
         return self.name
+
+
+"""
+model store donation details in db
+"""
 
 
 class Donation(models.Model):
